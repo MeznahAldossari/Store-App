@@ -5,7 +5,7 @@ import Meal from '../assets/meal.jpeg'
 import Remove from '../assets/remove.png'
 import Plus from '../assets/plus1.png'
 import Minus from '../assets/minus.png'
-
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
   return (
@@ -16,7 +16,7 @@ const Cart = () => {
         <div className="cart-items">
             <div className="flex justify-between gap-[80px] items-center text-[gray] text-[12px] ">
               <table className='w-full table-auto '>
-                <tr className=''>
+                <tr className='text-[18px]'>
                     <th>Items</th>
                     <th>Title</th>
                     <th>Price</th>
@@ -25,7 +25,7 @@ const Cart = () => {
                     <th>Remove</th>
                 </tr>
                 <hr className='pb-6 mt-2 w-full' />
-                <tr className=' '>
+                <tr className='text-[16px]'>
                     <td className='flex justify-center '><img className='w-[5vw]' src={Meal} alt="" /></td>
                     <td className='text-center '>name dish</td>
                     <td className='text-center'>Price</td>
@@ -77,7 +77,7 @@ const Cart = () => {
                     <p className='font-bold'>12</p>
                 </div>
             </div>
-            <button className='text-white bg-[#da6129] mt-6 hover:bg-[#e28154] w-[200px] py-3 rounded-[4px] cursor-pointer'>Proceed to checkout</button>
+            <Link to='/Order'><button className='text-white bg-[#da6129] mt-6 hover:bg-[#e28154] w-[200px] py-3 rounded-[4px] cursor-pointer'>Proceed to checkout</button></Link>
         </div>
         {/* <div className="promocode">
             <div>

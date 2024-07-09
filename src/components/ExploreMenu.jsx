@@ -4,7 +4,7 @@ const ExploreMenu = () => {
   return (
     <div className='flex flex-col gap-5 '>
         <h1 className='text-[#262626] font-medium text-[30px]'>Explore our menu</h1>
-        <p className='max-w-[60%]'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum, repudiandae, inventore quod placeat excepturi aperiam asperiores et dolore aspernatur velit minima sit.</p>
+        <p className='max-w-[60%]'>Choose from a diverse menu featuring a delectable array of dishes. Our mission is to satisfy your cravings and elevate your dining experience, one delicious meal at a time.</p>
         <div className='explore-menu-list flex justify-between items-center gap-[30px] text-center my-5 '> {/*hidden scroll*/}
             {/* {map here} */}
             <div className='items'>

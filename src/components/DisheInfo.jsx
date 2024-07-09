@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import {  useParams } from 'react-router-dom';
 import axios from 'axios';
+import Nav from '../components/Nav'
+import Footer from '../components/Footer'
+import { Link } from 'react-router-dom';
+
 
 
 
@@ -83,20 +87,29 @@ const DisheInfo = () => {
 
       }
   return (
-    <div key={id} className='w-[100%]  m-auto rounded-[15px] shadow-inner'> {/*box-shadow: 0px 0px 10px #00000015; css*/}
+    <>
+    <Nav />
+    <div className='mt-16'>
+  <div key={id} className='w-[60%] m-auto rounded-[15px] shadow flex'> {/*box-shadow: 0px 0px 10px #00000015; css*/}
     <div className="relative ">
-        <img className='w-[100%]  rounded-[15px]' src={dishes.image} />
+        <img className='w-[20vw] rounded-[15px]' src={dishes.image} />
     </div>
     <div className="p-[20px] ">
-        <div className="flex justify-between items-center mb-[10px]">
+        <div className="flex items-end justify-between mb-[10px]">
             <p className='text-[20px] font-medium'>{dishes.product}</p>
             {/* <img className='w-[70px]'>rating stars</img> */}
         </div>
         <p className="text-[#676767] text-[14px]">{dishes.discription}</p>
         <p className="text-[#e46634] text-[22px] font-medium my-4">{dishes.price}$</p>
-        <button onClick={()=>AddToCart(id)}>Add To Cart</button>
+        <div className='flex gap-4'>
+          <button className='text-white bg-[#da6129] mt-6 hover:bg-[#e28154] w-[200px] py-3 rounded-[4px] cursor-pointer' onClick={()=>AddToCart(id)}>Add To Cart</button>
+          <Link to="/"><button className='text-white bg-[#4e4e4e] mt-6 hover:bg-[#757575] w-[200px] py-3 rounded-[4px] cursor-pointer'>Back</button></Link>
+        </div>
     </div>
 </div>
+</div>
+<Footer />
+</>
   )
 }
 

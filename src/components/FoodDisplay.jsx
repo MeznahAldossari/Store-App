@@ -33,8 +33,6 @@ const FoodDisplay = () => {
             {/* {map method start here} */}
             {dishes.map((dishe, id) => (
 <div key={id}>
-<Link to={`/DisheInfo/${dishe.id}`}>
-
          <div className='w-[100%] m-auto rounded-[15px] shadow-inner'> {/*box-shadow: 0px 0px 10px #00000015; css*/}
                 <div className="relative ">
                     <img className='w-[100%] rounded-[15px]' src={dishe.image} />
@@ -45,9 +43,9 @@ const FoodDisplay = () => {
                         {/* <img className='w-[70px]'>rating stars</img> */}
                     </div>
                     <p className="text-[#e46634] text-[22px] font-medium my-4">{dishe.price}$</p>
+                    <Link to={`/DisheInfo/${dishe.id}`}><p className='text-[#e46634] hover:text-[#fa8f64] flex justify-end'>More Details</p></Link>
                 </div>
             </div>
-            </Link>
 
             </div>
 

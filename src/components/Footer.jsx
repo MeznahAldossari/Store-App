@@ -11,7 +11,7 @@ const Footer = () => {
         <div className="w-[100%] grid grid-cols-custom gap-[80px]">
             <div className="flex flex-col items-start gap-[20px]">
                 <img className='w-[10vw]' src={Logo} alt="" />
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem quisquam vero nam labore eum, reprehenderit explicabo laborum facilis consequatur? Ducimus nihil exercitationem, blanditiis voluptas laborum alias deleniti ullam soluta tempora?</p>
+                {/* <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem quisquam vero nam labore eum, reprehenderit explicabo laborum facilis consequatur? Ducimus nihil exercitationem, blanditiis voluptas laborum alias deleniti ullam soluta tempora?</p> */}
                 <div className="flex w-[40px] mr-[15px]">
                     <img src={X} alt="" />
                     <img src={Facebook} alt="" />
