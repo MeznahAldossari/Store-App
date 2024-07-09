@@ -7,6 +7,7 @@ import Plus from '../assets/plus1.png'
 import Minus from '../assets/minus.png'
 import axios from 'axios'
 
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
     const [allProducts, setAllProducts] = useState([])
@@ -130,7 +131,7 @@ const removeItem = (itemID)=>{
         <div className="cart-items">
             <div className="flex justify-between gap-[80px] items-center text-[gray] text-[12px] ">
               <table className='w-full table-auto '>
-                <tr className=''>
+                <tr className='text-[18px]'>
                     <th>Items</th>
                     <th>Title</th>
                     <th>Price</th>
@@ -139,6 +140,7 @@ const removeItem = (itemID)=>{
                     <th>Remove</th>
                 </tr>
                 <hr className='pb-6 mt-2 w-full' />
+<<<<<<< HEAD
                 {allProducts && (
                     <>
                     {allProducts.map((item, index) =>(
@@ -167,6 +169,9 @@ const removeItem = (itemID)=>{
                     </>
                 )}
                 {/* <tr className=' '>
+=======
+                <tr className=' '>
+>>>>>>> a73e856755bd22b36462e823f493ee67f96e3e5f
                     <td className='flex justify-center '><img className='w-[5vw]' src={Meal} alt="" /></td>
                     <td className='text-center '>name dish</td>
                     <td className='text-center'>Price</td>
@@ -181,7 +186,7 @@ const removeItem = (itemID)=>{
                     </td>
                     <td className='text-center'>Subtotal</td>
                     <td className='text-center '><img className='w-[2vw] m-auto' src={Remove} alt="" /></td>
-                </tr> */}
+                </tr> 
               </table>
               
                 {/* <p>Items</p>
@@ -218,7 +223,7 @@ const removeItem = (itemID)=>{
                     <p className='font-bold'>{productTotal}</p>
                 </div>
             </div>
-            <button className='text-white bg-[#da6129] mt-6 hover:bg-[#e28154] w-[200px] py-3 rounded-[4px] cursor-pointer'>Proceed to checkout</button>
+            <Link to='/Order'><button className='text-white bg-[#da6129] mt-6 hover:bg-[#e28154] w-[200px] py-3 rounded-[4px] cursor-pointer'>Proceed to checkout</button></Link>
         </div>
         {/* <div className="promocode">
             <div>
