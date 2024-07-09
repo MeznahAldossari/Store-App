@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import Meal from '../assets/meal.jpeg'
-import Plus from '../assets/plus.png'
-import PlusGreen from '../assets/plus1.png'
-import Minus from '../assets/minus.png'
+// import Meal from '../assets/meal.jpeg'
+// import Plus from '../assets/plus.png'
+// import PlusGreen from '../assets/plus1.png'
+// import Minus from '../assets/minus.png'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 

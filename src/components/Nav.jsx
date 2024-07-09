@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { login, logout } from '../features/LogInSlice'; 
 
+import { Link } from 'react-router-dom'
 
 const Nav = () => {
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
@@ -19,7 +20,7 @@ const Nav = () => {
   return (
     <>
     <div className='p-5 flex justify-between items-center'>
-        <img className='w-[150px] ' src={Logo} />
+        <Link to="/"><img className='w-[150px] ' src={Logo} /></Link>
         <ul className='flex list-none gap-5 text-[#49557e] text-[18px]'>
             <li>home</li>
             <li>menu</li>
@@ -28,7 +29,7 @@ const Nav = () => {
         <div className='flex items-center gap-10'>
             <img className='w-[2vw]' src={Search}/>
             <div className='relative '>
-                <img className='w-[2vw]' src={Basket} />
+                <Link to='/Cart'><img className='w-[2vw]' src={Basket} /></Link>
                 {/* <div className='absolute min-w-[10px] min-h-[10px] bg-[tomato] rounded-[5px] top-[8px] right-[8px]'></div> */}
             </div>
             {isLoggedIn ? (
