@@ -1,13 +1,102 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import Meal from '../assets/meal.jpeg'
 import Remove from '../assets/remove.png'
 import Plus from '../assets/plus1.png'
 import Minus from '../assets/minus.png'
+import axios from 'axios'
 
 
 const Cart = () => {
+    const [allProducts, setAllProducts] = useState([])
+    const [productTotal, setProductTotals] = useState(0)
+    const getLocal = localStorage.getItem("id")
+
+    useEffect(()=>{
+        getCartProducts()
+        getWholeTotal()
+    }, [])
+
+    const getCartProducts = ()=>{
+        axios.get(`https://667b1a30bd627f0dcc91b421.mockapi.io/Users/Users/${getLocal}`).then((res)=>{
+            console.log("the data is", JSON.stringify(res.data.cartItem))
+            if(getLocal && getLocal !==undefined){
+                if(res.data.cartItem && res.data.cartItem !==undefined){
+                    setAllProducts(res.data.cartItem)
+
+                }
+            }
+        })
+
+
+    }
+
+    const getWholeTotal = ()=>
+    {
+        axios.get(`https://667b1a30bd627f0dcc91b421.mockapi.io/Users/Users/${getLocal}`).then((res)=>{
+            let getItems = res.data.cartItem
+            let allPrice =  getItems.reduce((prev ,item) => {
+             return prev + (item.qty*item.price);
+           }, 0)
+ 
+           console.log("the totla is"+ allPrice)
+           setProductTotals(allPrice)
+
+        })
+       
+    }
+const AddQTY = (itemID)=>{
+    axios.get(`https://667b1a30bd627f0dcc91b421.mockapi.io/Users/Users/${getLocal}`).then((res)=>{
+        let finding = res.data.cartItem
+        let increaseQTY = finding.map((item)=>{
+            if(item.prodID ===itemID ){
+              return {...item, "qty":item.qty + 1}
+            }
+
+            return item
+    })
+    axios.put(`https://667b1a30bd627f0dcc91b421.mockapi.io/Users/Users/${getLocal}`,{
+        cartItem: increaseQTY
+
+    }).then((res)=>{
+        setAllProducts([...increaseQTY])
+
+        let Prices =  increaseQTY.reduce((prev ,item) => {
+            return prev + (item.qty*item.price);
+          }, 0)
+         console.log("the total is 2 "+ Prices)
+          setProductTotals(Prices)
+    })})
+
+}
+
+const removeQTY = (itemID)=>{
+
+    axios.get(`https://667b1a30bd627f0dcc91b421.mockapi.io/Users/Users/${getLocal}`).then((res)=>{
+        let finding = res.data.cartItem
+        let increaseQTY = finding.map((item)=>{
+            if(item.prodID ===itemID && item.qty > 1){
+              return {...item, "qty":item.qty - 1}
+            }
+
+            return item
+    })
+    axios.put(`https://667b1a30bd627f0dcc91b421.mockapi.io/Users/Users/${getLocal}`,{
+        cartItem: increaseQTY
+
+    }).then((res)=>{
+        setAllProducts([...increaseQTY])
+
+        let Prices =  increaseQTY.reduce((prev ,item) => {
+            return prev + (item.qty*item.price);
+          }, 0)
+         console.log("the total is 2 "+ Prices)
+          setProductTotals(Prices)
+    })})
+
+
+}
   return (
     <>
     <Nav />
@@ -25,7 +114,34 @@ const Cart = () => {
                     <th>Remove</th>
                 </tr>
                 <hr className='pb-6 mt-2 w-full' />
-                <tr className=' '>
+                {allProducts && (
+                    <>
+                    {allProducts.map((item, index) =>(
+                        <>
+                        <tr className=' ' key={index}>
+                            <td className='flex justify-center '><img className='w-[5vw]' src={item.image} alt="" /></td>
+                            <td className='text-center '>{item.productName}</td>
+                            <td className='text-center'>{item.price}</td>
+                            <td className='text-center'>
+                            <div className='flex flex-col justify-between h-full py-2 items-center '>
+                            <p>{item.qty}</p>
+                            <div className='flex gap-2 justify-center items-center mt-4'>
+                                
+                                <img className='w-5 h-5' src={Plus} onClick={()=>AddQTY(item.prodID)} alt="" />
+                                <img className='w-5 h-5' src={Minus}  onClick={()=>removeQTY(item.prodID)} alt="" />
+                            </div>
+                            </div>
+                            </td>
+                            <td className='text-center'>{item.qty*item.price}</td>
+                            <td className='text-center '><img className='w-[2vw] m-auto' src={Remove} alt="" /></td>
+                        </tr>
+                        
+                        </>
+                    ))}
+                   
+                    </>
+                )}
+                {/* <tr className=' '>
                     <td className='flex justify-center '><img className='w-[5vw]' src={Meal} alt="" /></td>
                     <td className='text-center '>name dish</td>
                     <td className='text-center'>Price</td>
@@ -40,7 +156,7 @@ const Cart = () => {
                     </td>
                     <td className='text-center'>Subtotal</td>
                     <td className='text-center '><img className='w-[2vw] m-auto' src={Remove} alt="" /></td>
-                </tr>
+                </tr> */}
               </table>
               
                 {/* <p>Items</p>
@@ -68,13 +184,13 @@ const Cart = () => {
             <h2 className='text-[1.5rem] font-bold'>Cart Totals</h2>
             <div>
                 <div className="flex justify-between text-[#555]">
-                    <p>Delivery </p>
+                    <p>Delivery Fees </p>
                     <p className='font-bold'>2</p>
                 </div>
                 <hr className='my-4 ' />
                 <div className="flex justify-between text-[#555]">
                     <p >Total</p>
-                    <p className='font-bold'>12</p>
+                    <p className='font-bold'>{productTotal}</p>
                 </div>
             </div>
             <button className='text-white bg-[#da6129] mt-6 hover:bg-[#e28154] w-[200px] py-3 rounded-[4px] cursor-pointer'>Proceed to checkout</button>

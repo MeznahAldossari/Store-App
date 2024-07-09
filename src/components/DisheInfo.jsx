@@ -39,14 +39,16 @@ const DisheInfo = () => {
                   let checkUniques = arr.find((prod)=> prod.prodID ===productID)
  
                   if(!checkUniques && checkUniques == undefined){
+                    let count = arr.length
                     arr.push({
-                      "id": String(arr.length++),
+                      "id": String(count+1),
                       "prodID":productID,
                       "userID":getLocal,
                       "image":productInfo.image,
                       "productName": productInfo.product,
                       "price": productInfo.price,
-                      "qty": 1
+                      "qty": 1,
+                      "status":"uncomplete"
                     })
                   }else{
                     alert("the item Already Exists")
@@ -60,7 +62,8 @@ const DisheInfo = () => {
                     "image":productInfo.image,
                     "productName": productInfo.product,
                     "price": productInfo.price,
-                    "qty": 1
+                    "qty": 1,
+                     "status":"uncomplete"
                   })
 
                 }
