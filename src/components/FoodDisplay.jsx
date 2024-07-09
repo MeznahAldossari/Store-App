@@ -44,7 +44,6 @@ const FoodDisplay = () => {
                         <p className='text-[20px] font-medium'>{dishe.product}</p>
                         {/* <img className='w-[70px]'>rating stars</img> */}
                     </div>
-                    <p className="text-[#676767] text-[14px]">{dishe.discription}</p>
                     <p className="text-[#e46634] text-[22px] font-medium my-4">{dishe.price}$</p>
                 </div>
             </div>
