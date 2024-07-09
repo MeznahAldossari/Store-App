@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { login, logout } from '../features/LogInSlice'; 
 
-import { Link } from 'react-router-dom'
 
 const Nav = () => {
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
