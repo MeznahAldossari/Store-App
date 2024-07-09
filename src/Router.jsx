@@ -1,5 +1,6 @@
 import {createBrowserRouter,RouterProvider,} from "react-router-dom";
 import Home from './pages/Home'
+import DisheInfo from "./components/DisheInfo";
 
 
 function Router() {
@@ -7,6 +8,10 @@ function Router() {
         {
           path: "/",
           element: <Home />,
+        },
+        {
+          path: "/DisheInfo/:id",
+          element: <DisheInfo />,
         },
       ]);
     return(
