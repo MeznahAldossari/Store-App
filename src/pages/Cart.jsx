@@ -97,6 +97,31 @@ const removeQTY = (itemID)=>{
 
 
 }
+const removeItem = (itemID)=>{
+    axios.get(`https://667b1a30bd627f0dcc91b421.mockapi.io/Users/Users/${getLocal}`).then((res)=>{
+        let userCart = res.data.cartItem
+        let finding = userCart.filter((e)=> e.prodID !== itemID)
+
+
+        axios.put(`https://667b1a30bd627f0dcc91b421.mockapi.io/Users/Users/${getLocal}`,{
+            cartItem: finding
+    
+        }).then((res)=>{
+    
+            setAllProducts(allProducts.filter((p)=>p.prodID !==itemID))
+            let Prices =  finding.reduce((prev ,item) => {
+                return prev + (item.qty*item.price);
+              }, 0)
+    
+              console.log("#########"+ Prices)
+              setProductTotals(Prices)
+        })
+
+    })
+
+}
+
+
   return (
     <>
     <Nav />
@@ -133,7 +158,7 @@ const removeQTY = (itemID)=>{
                             </div>
                             </td>
                             <td className='text-center'>{item.qty*item.price}</td>
-                            <td className='text-center '><img className='w-[2vw] m-auto' src={Remove} alt="" /></td>
+                            <td className='text-center'><img className='w-[2vw] m-auto curser-pointer' src={Remove} alt="" onClick={()=> removeItem(item.prodID)} /></td>
                         </tr>
                         
                         </>
