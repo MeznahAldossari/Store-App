@@ -4,6 +4,7 @@ import DisheInfo from "./components/DisheInfo";
 import Cart from "./pages/Cart";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
+import Checkout from "./pages/Checkout";
 
 
 function Router() {
@@ -25,9 +26,14 @@ function Router() {
           element: <Login />,
         },
         {
-          path: "/Cart",
-          element: <Cart />,
-        },
+            path: "/Cart",
+            element: <Cart />,
+          },
+          {
+            path: "/Order",
+            element: <Checkout />,
+
+          }
       ]);
     return(
         
