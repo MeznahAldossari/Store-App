@@ -140,7 +140,6 @@ const removeItem = (itemID)=>{
                     <th>Remove</th>
                 </tr>
                 <hr className='pb-6 mt-2 w-full' />
-<<<<<<< HEAD
                 {allProducts && (
                     <>
                     {allProducts.map((item, index) =>(
@@ -165,13 +164,12 @@ const removeItem = (itemID)=>{
                         
                         </>
                     ))}
+
                    
                     </>
                 )}
+                </table>
                 {/* <tr className=' '>
-=======
-                <tr className=' '>
->>>>>>> a73e856755bd22b36462e823f493ee67f96e3e5f
                     <td className='flex justify-center '><img className='w-[5vw]' src={Meal} alt="" /></td>
                     <td className='text-center '>name dish</td>
                     <td className='text-center'>Price</td>
@@ -225,15 +223,7 @@ const removeItem = (itemID)=>{
             </div>
             <Link to='/Order'><button className='text-white bg-[#da6129] mt-6 hover:bg-[#e28154] w-[200px] py-3 rounded-[4px] cursor-pointer'>Proceed to checkout</button></Link>
         </div>
-        {/* <div className="promocode">
-            <div>
-                <p>If you have a promo code, Enter it here</p>
-                <div className='input'>
-                    <input type='text' placeholder='promo code' />
-                    <button>Submit</button>
-                </div>
-            </div>
-        </div> */}
+     
     </div>
     </div>
     <Footer />
