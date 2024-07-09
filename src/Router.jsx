@@ -16,6 +16,18 @@ function Router() {
           path: "/DisheInfo/:id",
           element: <DisheInfo />,
         },
+        {
+          path: "/SignUp",
+          element: <SignUp />,
+        },
+        {
+          path: "/Login",
+          element: <Login />,
+        },
+        {
+          path: "/Cart",
+          element: <Cart />,
+        },
       ]);
     return(
         
