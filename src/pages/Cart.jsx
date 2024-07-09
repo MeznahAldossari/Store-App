@@ -139,7 +139,7 @@ const removeItem = (itemID)=>{
                     <th>Subtotal</th>
                     <th>Remove</th>
                 </tr>
-                <hr className='pb-6 mt-2 w-full' />
+                {/* <hr className='pb-6 mt-2 w-full' /> */}
                 {allProducts && (
                     <>
                     {allProducts.map((item, index) =>(

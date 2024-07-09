@@ -102,12 +102,16 @@ const DisheInfo = () => {
             <p className='text-[20px] font-medium'>{dishes.product}</p>
             {/* <img className='w-[70px]'>rating stars</img> */}
         </div>
-        <p className="text-[#676767] text-[14px]">{dishes.discription}</p>
-        <p className="text-[#e46634] text-[22px] font-medium my-4">{dishes.price}$</p>
+      <div className='flex flex-col justify-between h-[55vh]'>
+        <div>
+          <p className="text-[#676767] text-[14px]">{dishes.discription}</p>
+          <p className="text-[#e46634] text-[22px] font-medium my-4">{dishes.price}$</p>
+        </div>
         <div className='flex gap-4'>
           <button className='text-white bg-[#da6129] mt-6 hover:bg-[#e28154] w-[200px] py-3 rounded-[4px] cursor-pointer' onClick={()=>AddToCart(id)}>Add To Cart</button>
-          <Link to="/"><button className='text-white bg-[#4e4e4e] mt-6 hover:bg-[#757575] w-[200px] py-3 rounded-[4px] cursor-pointer'>Back</button></Link>
+          <Link to="/"><button className='text-white bg-[#616161] mt-6 hover:bg-[#757575] w-[200px] py-3 rounded-[4px] cursor-pointer'>Back</button></Link>
         </div>
+      </div>
     </div>
 </div>
 </div>

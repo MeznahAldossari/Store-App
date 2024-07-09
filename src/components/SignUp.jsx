@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Formik } from 'formik';
+import Logo from '../assets/foodly-logo.png'
+
 
 const SignUp = () => {
     const [serverError, setServerError] = useState("");
@@ -26,6 +28,7 @@ const SignUp = () => {
     return (
         <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+                <div className="flex justify-center"><Link to='/'><img className="h-10 " src={Logo} alt="" /></Link></div>
                 <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
                     Sign up to your account
                 </h2>
@@ -116,7 +119,7 @@ const SignUp = () => {
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                className="flex w-full justify-center rounded-md bg-[#da6129] hover:bg-[#e28154] px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                             >
                                 Sign up
                             </button>
@@ -127,8 +130,14 @@ const SignUp = () => {
 
                 <p className="mt-10 text-center text-sm text-gray-500">
                     You have an account
-                    <Link to="/login" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                    <Link to="/login" className="font-semibold leading-6 text-[#da6129] hover:text-[#e28154]">
                         Log in
+                    </Link>
+                </p>
+                <p className=" text-center text-sm text-gray-500">
+                    Back to 
+                    <Link to="/" className="pl-[3px] font-semibold leading-6 text-[#da6129] hover:text-[#e28154]">
+                        home
                     </Link>
                 </p>
             </div>

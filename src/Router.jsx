@@ -5,6 +5,7 @@ import Cart from "./pages/Cart";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import Checkout from "./pages/Checkout";
+import PreviousOrders from './components/PreviousOrders'
 
 
 function Router() {
@@ -28,12 +29,17 @@ function Router() {
         {
             path: "/Cart",
             element: <Cart />,
-          },
-          {
+        },
+        {
             path: "/Order",
             element: <Checkout />,
 
-          }
+        },
+        {
+            path: "/PreviousOrders",
+            element: <PreviousOrders />,
+
+        }
       ]);
     return(
         
