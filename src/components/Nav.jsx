@@ -69,6 +69,20 @@ const Nav = ({itemsTotal}) => {
             Home
           </li>
         </Link>
+        {getLocal ==undefined && !getLocal &&(
+          <>
+           <li className='md:hidden flex items-center mt-1 text-white'>
+          <Link to="/Login">
+            
+            <li className="mt-4 flex items-center text-[1.5rem] text-white">
+            Login
+          </li>
+            
+          </Link>
+        </li>
+        
+          </>
+        )}
         {getLocal !==undefined && getLocal &&(
           <>
            <li className='md:hidden flex items-center mt-1 text-white'>
