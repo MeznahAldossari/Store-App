@@ -13,7 +13,7 @@ const DisheInfo = () => {
     const { id } = useParams();
     const [productDetails, setProductDetails] = useState({})
     const getLocal = localStorage.getItem("id")
-    const [count, setCount] = useState(0)
+    const [hiscount, setCount] = useState(0)
 
 
     
@@ -55,6 +55,7 @@ const DisheInfo = () => {
                       "qty": 1,
                       "status":"uncomplete"
                     })
+                  
                   }else{
                     alert("the item Already Exists")
                   }
@@ -70,12 +71,12 @@ const DisheInfo = () => {
                     "qty": 1,
                      "status":"uncomplete"
                   })
-                  setCount(count+1)
-
+             
                 }
                 axios.put(`https://667b1a30bd627f0dcc91b421.mockapi.io/Users/Users/${getLocal}`,{
                   cartItem:arr
-                }).then({
+                }).then((res)=>{
+                    setCount(hiscount+1)
 
                 })
 
@@ -91,9 +92,10 @@ const DisheInfo = () => {
         
 
       }
+
   return (
     <>
-    <Nav />
+    <Nav itemsTotal = {hiscount}/>
 <div className='mt-20 '>
   <div key={id} className=' w-[80%] m-auto rounded-[15px] shadow flex'> {/*box-shadow: 0px 0px 10px #00000015; css*/}
     <div className="relative ">

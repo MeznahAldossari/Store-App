@@ -117,7 +117,6 @@ const FoodDisplay = ({categoryFood}) => {
 ))
 )}          
 
-            {/* {map method end here} */}
         </div> 
         </div>   
     </div>
