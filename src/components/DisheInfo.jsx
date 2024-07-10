@@ -92,8 +92,8 @@ const DisheInfo = () => {
   return (
     <>
     <Nav />
-<div className='mt-16 '>
-  <div key={id} className=' w-[60%] m-auto rounded-[15px] shadow flex'> {/*box-shadow: 0px 0px 10px #00000015; css*/}
+<div className='mt-20 '>
+  <div key={id} className=' w-[80%] m-auto rounded-[15px] shadow flex'> {/*box-shadow: 0px 0px 10px #00000015; css*/}
     <div className="relative ">
         <img className='w-[20vw] rounded-[15px]' src={dishes.image} />
     </div>

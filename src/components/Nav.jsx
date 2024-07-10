@@ -18,12 +18,12 @@ const Nav = () => {
 
   return (
     <>
-    <div className='p-5 flex justify-between items-center'>
+    <div className='px-5 py-4 flex  justify-between items-center'>
         <Link to="/"><img className='w-[150px] ' src={Logo} /></Link>
         <ul className='flex list-none gap-10 text-[#49557e] text-[18px]'>
-            <li className='hover:text-[#da6129]'>home</li>
-            <li className='hover:text-[#da6129]'>menu</li>
-            <Link to='/PreviousOrders'><li className='hover:text-[#da6129]'>previous orders</li></Link>
+        <Link to='/'> <li className='hover:text-[#da6129] text-[1.2rem] cursor-pointer'>Home</li></Link>
+            {/* <li className='hover:text-[#da6129] text-[1.2rem] cursor-pointer'>Menu</li> */}
+            <Link to='/PreviousOrders'><li className='text-[1.2rem] hover:text-[#da6129] cursor-pointer'>Previous Orders</li></Link>
         </ul>
         <div className='flex items-center gap-10'>
             {/* <img className='w-[2vw]' src={Search}/> */}

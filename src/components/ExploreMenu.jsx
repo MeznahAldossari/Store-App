@@ -1,19 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Meal from '../assets/meal.jpeg'
+import pizzas from '../assets/pizzas.jpg'
+import sweet from '../assets/sweets.png'
+import FoodDisplay from './FoodDisplay'
 const ExploreMenu = () => {
+    const [cateoryOption, setCategoryOption] = useState("All")
   return (
     <div className='flex flex-col gap-5 '>
-        <h1 className='text-[#262626] font-medium text-[30px]'>Explore our menu</h1>
-        <p className='max-w-[60%]'>Choose from a diverse menu featuring a delectable array of dishes. Our mission is to satisfy your cravings and elevate your dining experience, one delicious meal at a time.</p>
+        <h1 className='text-[#262626] font-medium text-[30px]'>Explore Our Menu</h1>
+        <p className='w-full text-[1.1rem]'>Choose from a diverse menu featuring a delectable array of dishes. Our mission is to satisfy your cravings and elevate your dining experience, one delicious meal at a time.</p>
         <div className='explore-menu-list flex justify-between items-center gap-[30px] text-center my-5 '> {/*hidden scroll*/}
             {/* {map here} */}
-            <div className='items'>
+            <div className='items flex gap-6'>
+            <div className='bg-black' onClick={()=>setCategoryOption("All")}>
                 <img className='w-[7.5vw] min-w-[80px] cursor-pointer rounded-full transition-[0.2s]' src={Meal} />
-                <p className=' mt-[10px] text-[#747474] text-[16px] cursor-pointer'>Name</p>
-            </div>
+                <p className=' mt-[10px] text-[#747474] text-[16px] cursor-pointer'>All</p>
+                
+
+                </div>
+                <div onClick={()=>setCategoryOption("burgers")}>
+                <img className='w-[7.5vw] min-w-[80px] cursor-pointer rounded-full transition-[0.2s]' src={Meal} />
+                <p className=' mt-[10px] text-[#747474] text-[16px] cursor-pointer'>burgers</p>
+                
+
+                </div>
+                <div onClick={()=>setCategoryOption("Desserts")}>
+                <img className='w-[8vw] h-[20vh] cursor-pointer rounded-full ' src={sweet} />
+                <p className=' mt-[10px] text-[#747474] text-[16px] cursor-pointer'>Desserts</p>
+                </div>
+                <div onClick={()=>setCategoryOption("pizza")}>
+                <img className='w-[7.5vw] min-w-[80px] cursor-pointer rounded-full transition-[0.2s]' src={Meal} />
+                <p className=' mt-[10px] text-[#747474] text-[16px] cursor-pointer'>pizza</p>
+                </div>
+                </div>
             {/* end here */}
             {/* <hr className='my-4 h-[2px] bg-[#999999] border-none' /> */}
         </div>
+        <FoodDisplay categoryFood={cateoryOption}/>
     </div>
 )
 }

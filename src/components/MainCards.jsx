@@ -1,68 +1,9 @@
-import React, { useState, useEffect } from 'react'
-// import Meal from '../assets/meal.jpeg'
-// import Plus from '../assets/plus.png'
-// import PlusGreen from '../assets/plus1.png'
-// import Minus from '../assets/minus.png'
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+import React from 'react'
 
-
-
-
-
-
-const FoodDisplay = ({categoryFood}) => {
-    const [count, setCount]=useState(0)
-    const [dishes, setDishes] = useState([]);
-    const [allDishes, setAllDishes] = useState([]); 
-    const [search, setSearch] = useState('');
-
-
-    
-  useEffect(() => {
-    getProducts()
-  
-  }, [categoryFood]);
-
-
-  const getProducts= ()=>{
-    axios.get('https://665736969f970b3b36c8658a.mockapi.io/Products')
-    .then(response => {
-      const dishesData = response.data;
-      if(categoryFood &&categoryFood === "All"){
-        setDishes(dishesData)
-        
-      }else if(categoryFood &&categoryFood === "pizza"){
-        let results = response.data.filter((item)=> item.category === "pizza")
-        setDishes(results)
-      }else if(categoryFood &&categoryFood === "burgers"){
-        let results = response.data.filter((item)=> item.category === "burgers")
-        setDishes(results)
-      }else{
-        let results = response.data.filter((item)=> item.category === "Desserts")
-        setDishes(results)
-      }
-      // setDishes(dishesData);
-      setAllDishes(dishesData);
-    })
-    .catch(error => {
-      console.error('Error fetching users:', error);
-    });
-
-  }
-  const handleSearch = () => {
-    if (search.trim() !== '') {
-      const filteredDishes = allDishes.filter(dishe =>
-        dishe.product.toLowerCase().includes(search.toLowerCase())
-      );
-      setDishes(filteredDishes);
-    } else {
-      setDishes(allDishes);
-    }
-  };
+function MainCards() {
   return (
-    <div className='mt-[30px] '>
-      <div className='flex justify-between'>
+    <div>
+        <div className='flex justify-between'>
       <h2 className='text-[24px] font-bold '>All Dishes</h2>
       <div className='flex gap-1'>
       <input
@@ -82,7 +23,8 @@ const FoodDisplay = ({categoryFood}) => {
       </div>
    
       </div>
-      <div className='flex justify-center w-full'>
+
+      <div className='flex justify-center w-full mt-4'>
         <div className='grid grid-cols-4 gap-y-16 mt-[30px] gap-[30px] row-gap-[30px]'> {/*grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); css*/}
             {/* {map method start here} */}
             {dishes.map((dishe, id) => (
@@ -111,8 +53,9 @@ const FoodDisplay = ({categoryFood}) => {
             {/* {map method end here} */}
         </div> 
         </div>   
+      
     </div>
   )
 }
 
-export default FoodDisplay
+export default MainCards
