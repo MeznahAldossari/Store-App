@@ -36,58 +36,61 @@ const DisheInfo = () => {
           .then(response => {
        
             let productInfo = response.data
+         if(getLocal){
+          if(productInfo && productInfo !== undefined){
+            axios.get(`https://667b1a30bd627f0dcc91b421.mockapi.io/Users/Users/${getLocal}`)
+            .then(res => {
+              let arr = []
+              if("cartItem" in res.data) {
+                arr = res.data.cartItem
+                let checkUniques = arr.find((prod)=> prod.prodID ===productID)
 
-            if(productInfo && productInfo !== undefined){
-              axios.get(`https://667b1a30bd627f0dcc91b421.mockapi.io/Users/Users/${getLocal}`)
-              .then(res => {
-                let arr = []
-                if("cartItem" in res.data) {
-                  arr = res.data.cartItem
-                  let checkUniques = arr.find((prod)=> prod.prodID ===productID)
- 
-                  if(!checkUniques && checkUniques == undefined){
-                    let count = arr.length
-                    arr.push({
-                      "id": String(count+1),
-                      "prodID":productID,
-                      "userID":getLocal,
-                      "image":productInfo.image,
-                      "productName": productInfo.product,
-                      "price": productInfo.price,
-                      "qty": 1,
-                      "status":"uncomplete"
-                    });
-                    setMessage({ successful: "The item is added to cart" });
-                  } else {
-                    setMessage({ exists: "The item already exists" });
-                  }
-                
-                }else{
+                if(!checkUniques && checkUniques == undefined){
+                  let count = arr.length
                   arr.push({
-                    "id": "1",
+                    "id": String(count+1),
                     "prodID":productID,
                     "userID":getLocal,
                     "image":productInfo.image,
                     "productName": productInfo.product,
                     "price": productInfo.price,
                     "qty": 1,
-                     "status":"uncomplete"
-                  })
-                  
+                    "status":"uncomplete"
+                  });
                   setMessage({ successful: "The item is added to cart" });
+                } else {
+                  setMessage({ exists: "The item already exists" });
                 }
-                axios.put(`https://667b1a30bd627f0dcc91b421.mockapi.io/Users/Users/${getLocal}`,{
-                  cartItem:arr
-                }).then((res)=>{
-                    setCount(hiscount+1)
-
+              
+              }else{
+                arr.push({
+                  "id": "1",
+                  "prodID":productID,
+                  "userID":getLocal,
+                  "image":productInfo.image,
+                  "productName": productInfo.product,
+                  "price": productInfo.price,
+                  "qty": 1,
+                   "status":"uncomplete"
                 })
-
-
+                
+                setMessage({ successful: "The item is added to cart" });
+              }
+              axios.put(`https://667b1a30bd627f0dcc91b421.mockapi.io/Users/Users/${getLocal}`,{
+                cartItem:arr
+              }).then((res)=>{
+                  setCount(hiscount+1)
 
               })
 
-            }
+
+
+            })
+
+          }
+
+         }
+        
 
             
           
@@ -142,8 +145,14 @@ const DisheInfo = () => {
           <p className="text-[#e46634] text-[22px] font-medium my-4">{dishes.price}$</p>
         </div>
         <div className='flex gap-4 max-sm:gap-[2px]  '>
-          <button className='text-white bg-[#da6129] mt-6 hover:bg-[#e28154] w-[200px] py-3 rounded-[4px] cursor-pointer max-sm:w-[40vw]' onClick={()=>AddToCart(id)}>Add To Cart</button>
-          <Link to="/"><button className='text-white bg-[#616161] mt-6 hover:bg-[#757575] w-[200px] py-3 rounded-[4px] cursor-pointer max-sm:w-[35vw]'>Back</button></Link>
+          <button className='text-white bg-[#da6129] mt-6 hover:bg-[#e28154] w-[200px] py-3 rounded-[4px] cursor-pointer max-sm:w-[40vw]' onClick={()=>{AddToCart(id)
+          
+          }}>Add To Cart</button>
+        
+                    <Link to="/"><button className='text-white bg-[#616161] mt-6 hover:bg-[#757575] w-[200px] py-3 rounded-[4px] cursor-pointer max-sm:w-[35vw]'>Back</button></Link>
+
+          
+        
         </div>
       </div>
     </div>
