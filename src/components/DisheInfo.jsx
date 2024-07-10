@@ -95,7 +95,7 @@ const DisheInfo = () => {
 <div className='mt-20 '>
   <div key={id} className=' w-[80%] m-auto rounded-[15px] shadow flex'> {/*box-shadow: 0px 0px 10px #00000015; css*/}
     <div className="relative ">
-        <img className='w-[20vw] rounded-[15px]' src={dishes.image} />
+        <img className='w-[20vw] h-[40vh] rounded-[15px]' src={dishes.image} />
     </div>
     <div className="p-[20px] ">
         <div className="flex items-end justify-between mb-[10px]">
