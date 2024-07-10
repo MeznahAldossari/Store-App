@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Logo from '../assets/foodly-logo.png'
 import Search from '../assets/search-icon.png'
 import Basket from '../assets/basket-icon.png'
@@ -7,12 +7,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { login, logout } from '../features/LogInSlice';
 import { useNavigate } from 'react-router-dom'; 
 import { GiHamburgerMenu } from "react-icons/gi";
+import axios from 'axios';
 
 
-const Nav = () => {
+const Nav = ({itemsTotal}) => {
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
   const getLocal = localStorage.getItem("id")
   const navigate = useNavigate()
+  const [counts, setCounts] = useState(0)
 
   const dispatch = useDispatch();
   const handleLogout = () => {
@@ -22,67 +24,31 @@ const Nav = () => {
 
   };
   useEffect(()=>{
+    getAllItems()
 
-  },[getLocal])
+  },[getLocal, itemsTotal])
 
   const CartItems = ()=>{
     navigate('/Cart')
 
   }
+  const getAllItems = ()=>{
+    axios.get(`https://667b1a30bd627f0dcc91b421.mockapi.io/Users/Users/${getLocal}`).then((res)=>{
+      let myInfo = res.data.cartItem
+
+      if(myInfo && myInfo!==undefined){
+        setCounts(myInfo.length)
+
+      }
+    })
+  }
 
   return (
-    <div className='max-sm:w-full max-sm:overflow-x-hidden'>
-      
-      <div className='flex w-full justify-between md:hidden h-12'>
-  <div className='mt-4 pl-2  w-[80%] float-left'>
-    <Link to="/">
-      <img className='w-[6rem]' src={Logo} alt="Logo" />
-    </Link>
-  </div>
-  <div className="drawer flex justify-end drawer-end float-right md:hidden  h-full z-50">
-    <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-
-    <div className="drawer-content pr-2">
-      {/* Page content here */}
-      <label htmlFor="my-drawer-4" className="drawer-button bg-white h-[3vh] z-40 btn border-none">
-        <GiHamburgerMenu style={{ color: "black" }} />
-      </label>
-    </div>
-    <div className="drawer-side">
-      <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-      <ul className="menu text-base-content min-h-full p-4 m-auto ">
-        {/* Sidebar content here */}
-        <Link to='/'>
-          <li className="mt-24 flex items-center text-[1.5rem] text-white">
-            Home
-          </li>
-        </Link>
-        <li className='md:hidden flex items-center mt-1 text-white'>
-          <Link to="/Cart">
-            
-            <li className="mt-4 flex items-center text-[1.5rem] text-white">
-            Cart
-          </li>
-            
-          </Link>
-        </li>
-        <Link to="/PreviousOrders">
-          <li className='leading-loose mt-2  flex items-center text-[1.5rem] text-white'>
-            Previous Orders
-          </li>
-        </Link>
-      </ul>
-    </div>
-  </div>
-</div>
-
-
-
-
-    <div className='px-5 py-4 flex  justify-between items-center max-sm:hidden'>
+    <>
+    <div className='px-5 py-4 flex  justify-between items-center'>
         <Link to="/"><img className='w-[150px] ' src={Logo} /></Link>
         <ul className='flex list-none gap-10 text-[#49557e] text-[18px]'>
-        <Link to='/'> <li className='hover:text-[#da6129] text-[1.2rem] cursor-pointer'>Home</li></Link>
+        {/* <Link to='/'> <li className='hover:text-[#da6129] text-[1.2rem] cursor-pointer'>Home</li></Link> */}
             {/* <li className='hover:text-[#da6129] text-[1.2rem] cursor-pointer'>Menu</li> */}
             {getLocal !==undefined && getLocal &&(<>
               <Link to='/PreviousOrders'><li className='text-[1.2rem] hover:text-[#da6129] cursor-pointer'>Previous Orders</li></Link>
@@ -93,6 +59,9 @@ const Nav = () => {
             {/* <img className='w-[2vw]' src={Search}/> */}
             {getLocal !==undefined && getLocal &&(
               <div>
+               
+                  <div className='w-4 h-4 flex justify-center items-center font-medium text-[0.5rem] rounded-full bg-red-700 text-white'>{counts}</div>
+                
               <div className='relative '>
                 <button onClick={CartItems}><img className='w-[2vw]' src={Basket} /></button>
                 {/* <div className='absolute min-w-[10px] min-h-[10px] bg-[tomato] rounded-[5px] top-[8px] right-[8px]'></div> */}
@@ -117,7 +86,7 @@ className='bg-transparent text-[16px] text-[#49557e] border border-solid border-
            
         </div>
     </div>
-    </div>
+    </>
   )
 }
 

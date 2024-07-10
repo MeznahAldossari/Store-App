@@ -4,6 +4,7 @@ import axios from 'axios';
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import { Link } from 'react-router-dom';
+import Basket from '../assets/basket-icon.png';
 
 
 
@@ -13,6 +14,8 @@ const DisheInfo = () => {
     const { id } = useParams();
     const [productDetails, setProductDetails] = useState({})
     const getLocal = localStorage.getItem("id")
+    const [hiscount, setCount] = useState(0)
+    const [message, setMessage] = useState({});
 
 
     
@@ -57,7 +60,7 @@ const DisheInfo = () => {
                   }else{
                     alert("the item Already Exists")
                   }
-
+                
                 }else{
                   arr.push({
                     "id": "1",
@@ -69,11 +72,13 @@ const DisheInfo = () => {
                     "qty": 1,
                      "status":"uncomplete"
                   })
+                  setCount(count+1)
 
                 }
                 axios.put(`https://667b1a30bd627f0dcc91b421.mockapi.io/Users/Users/${getLocal}`,{
                   cartItem:arr
-                }).then({
+                }).then((res)=>{
+                    setCount(hiscount+1)
 
                 })
 
@@ -89,9 +94,10 @@ const DisheInfo = () => {
         
 
       }
+
   return (
     <>
-    <Nav />
+    <Nav itemsTotal = {hiscount}/>
 <div className='mt-20 '>
   <div key={id} className=' w-[80%] m-auto rounded-[15px] shadow flex max-sm:flex-col'> {/*box-shadow: 0px 0px 10px #00000015; css*/}
     <div className="relative ">

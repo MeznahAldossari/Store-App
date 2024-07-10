@@ -16,6 +16,7 @@ const FoodDisplay = ({categoryFood}) => {
     const [dishes, setDishes] = useState([]);
     const [allDishes, setAllDishes] = useState([]); 
     const [search, setSearch] = useState('');
+    const [noDishesFound, setNoDishesFound] = useState(false);
 
 
     
@@ -56,8 +57,10 @@ const FoodDisplay = ({categoryFood}) => {
         dishe.product.toLowerCase().includes(search.toLowerCase())
       );
       setDishes(filteredDishes);
+      setNoDishesFound(filteredDishes.length === 0);
     } else {
       setDishes(allDishes);
+      setNoDishesFound(false);
     }
   };
   return (
@@ -70,7 +73,9 @@ const FoodDisplay = ({categoryFood}) => {
             className="border max-sm:h-[4vh] max-sm:w-[32vw]  border-gray-300 rounded-lg px-3 py-2 w-[25vw]"
             placeholder='Search..'
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => {setSearch(e.target.value)
+              setDishes(allDishes)}
+            }
           />
           <button
             className="flex max-sm:h-[4vh]  justify-center rounded-lg bg-orange-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -82,12 +87,15 @@ const FoodDisplay = ({categoryFood}) => {
       </div>
    
       </div>
+      
       <div className='flex justify-center w-full'>
-        <div className='grid grid-cols-4 gap-y-16 mt-[30px] gap-[30px] row-gap-[30px] max-sm:grid-cols-1 max-sm:gap-[2px] max-sm:row-gap-[2px] max-sm:gap-y-6'> {/*grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); css*/}
-            {/* {map method start here} */}
-            {dishes.map((dishe, id) => (
-<div key={id} className='h-auto pb-14 shadow-inner rounded-[15px]  items-stretch max-sm:h-[55vh]'>
-         <div className=' rounded-[15px] '> {/*box-shadow: 0px 0px 10px #00000015; css*/}
+        <div className='grid grid-cols-4 gap-y-16 mt-[30px] gap-[30px] row-gap-[30px] max-sm:grid-cols-1'> {/*grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); css*/}
+        {noDishesFound ? (
+        <p className=' text-2xl font-semibold'>No dishes found</p>
+      ) : (
+            dishes.map((dishe, id) => (
+<div key={id} className='h-[65vh] items-stretch'>
+         <div className=' rounded-[15px] shadow-inner'> {/*box-shadow: 0px 0px 10px #00000015; css*/}
                 <div className="h-[36vh]">
                     <img className='w-[100%] h-[40vh] rounded-[15px]' src={dishe.image} />
                 </div>
@@ -109,9 +117,9 @@ const FoodDisplay = ({categoryFood}) => {
 
             </div>
 
-                          ))}
+))
+)}          
 
-            {/* {map method end here} */}
         </div> 
         </div>   
     </div>
