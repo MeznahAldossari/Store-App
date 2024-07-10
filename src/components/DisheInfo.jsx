@@ -14,7 +14,7 @@ const DisheInfo = () => {
     const { id } = useParams();
     const [productDetails, setProductDetails] = useState({})
     const getLocal = localStorage.getItem("id")
-    const [count, setCount] = useState(0)
+    const [hiscount, setCount] = useState(0)
     const [message, setMessage] = useState({});
 
 
@@ -56,10 +56,9 @@ const DisheInfo = () => {
                       "price": productInfo.price,
                       "qty": 1,
                       "status":"uncomplete"
-                    });
-                    setMessage({ successful: "The item is added to cart" });
-                  } else {
-                    setMessage({ exists: "The item already exists" });
+                    })
+                  }else{
+                    alert("the item Already Exists")
                   }
                 
                 }else{
@@ -74,12 +73,12 @@ const DisheInfo = () => {
                      "status":"uncomplete"
                   })
                   setCount(count+1)
-                  setMessage({ successful: "The item is added to cart" });
 
                 }
                 axios.put(`https://667b1a30bd627f0dcc91b421.mockapi.io/Users/Users/${getLocal}`,{
                   cartItem:arr
-                }).then({
+                }).then((res)=>{
+                    setCount(hiscount+1)
 
                 })
 
@@ -95,38 +94,11 @@ const DisheInfo = () => {
         
 
       }
+
   return (
     <>
-    <Nav />
-      <div className='flex justify-end px-20 '>
- {/* start of message */}
- <div className='mt-10 mr-10'>
-                {message.exists && (
-                  <div role="alert" className="alert">
-                    <img className='w-[2vw]' src={Basket} alt="Basket Icon" />
-                    <span>{message.exists}</span>
-                  </div>
-                )}
-                {message.successful && (
-                  <div role="alert" className="alert alert-success">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6 shrink-0 stroke-current"
-                      fill="none"
-                      viewBox="0 0 24 24">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span>{message.successful}</span>
-                  </div>
-                )}
-              </div>
-              </div>
-
-<div className='mt-4 '>
+    <Nav itemsTotal = {hiscount}/>
+<div className='mt-20 '>
   <div key={id} className=' w-[80%] m-auto rounded-[15px] shadow flex'> {/*box-shadow: 0px 0px 10px #00000015; css*/}
     <div className="relative ">
         <img className='w-[20vw] h-[40vh] rounded-[15px]' src={dishes.image} />

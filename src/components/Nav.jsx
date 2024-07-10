@@ -10,7 +10,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import axios from 'axios';
 
 
-const Nav = () => {
+const Nav = ({itemsTotal}) => {
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
   const getLocal = localStorage.getItem("id")
   const navigate = useNavigate()
@@ -26,7 +26,7 @@ const Nav = () => {
   useEffect(()=>{
     getAllItems()
 
-  },[getLocal, counts])
+  },[getLocal, itemsTotal])
 
   const CartItems = ()=>{
     navigate('/Cart')
