@@ -127,9 +127,9 @@ const removeItem = (itemID)=>{
     <>
     <Nav />
     <div className='flex flex-col justify-center items-center'> 
-    <div className='mt-[100px] w-[70vw] max-sm:w-[100vw]'>
+    <div className='mt-[100px] w-[70vw] max-sm:w-[100vw] '>
         <div className="cart-items">
-            <div className="flex justify-between gap-[80px] items-center text-[gray] text-[12px] ">
+            <div className="flex justify-between gap-[80px] items-center text-[gray] text-[12px] m-2 ">
             {allProducts.length >0 ? (
                     <>
               <table className='w-full table-auto '>
@@ -154,13 +154,35 @@ const removeItem = (itemID)=>{
                             <p className='text-[0.9rem] max-sm:text-[0.8rem]'>{item.qty}</p>
                             <div className='flex gap-2 justify-center items-center mt-4'>
                                 
-                                <img className='w-5 h-5 cursor-pointer' src={Plus} onClick={()=>AddQTY(item.prodID)} alt="" />
-                                <img className='w-5 h-5 cursor-pointer' src={Minus}  onClick={()=>removeQTY(item.prodID)} alt="" />
+                                <img className='w-5 h-5 cursor-pointer max-sm:w-4 max-sm:h-4' src={Plus} onClick={()=>AddQTY(item.prodID)} alt="" />
+                                <img className='w-5 h-5 cursor-pointer max-sm:w-4 max-sm:h-4' src={Minus}  onClick={()=>removeQTY(item.prodID)} alt="" />
                             </div>
                             </div>
                             </td>
                             <td className='text-center text-[0.9rem] max-sm:text-[0.8rem]'>{item.qty*item.price}</td>
-                            <td className='text-center'><img className='w-[2vw] m-auto curser-pointer max-sm:w-[5vw]' src={Remove} alt="" onClick={()=> removeItem(item.prodID)} /></td>
+                            <td className='text-center'>
+                                
+                            <img className=" w-[2vw] m-auto cursor-pointer max-sm:w-[5vw]" src={Remove} onClick={() => { document.getElementById('my_modal_4').showModal() }} />
+
+                            </td>
+                            <dialog id="my_modal_4" className="modal ">
+                                <div className="modal-box w-[35vw] max-w-5xl">
+
+                                <p className="py-4 text-[1.1rem]">Are you sure you want to Remove this Item?</p>
+                                <div className="modal-action">
+                                <form method="dialog" className='gap-6'>
+                               
+                                <button className="btn mr-2 bg-[#da6129] text-white" onClick={()=> removeItem(item.prodID)}>Yes</button>
+                               
+                               
+                                <button className="btn bg-[#da6129] text-white">No</button>
+                               
+
+                                </form>
+                                </div>
+                                </div>
+                            </dialog>
+                        
                         </tr>
                         
                         </>
@@ -199,7 +221,7 @@ const removeItem = (itemID)=>{
             {allProducts.length >0?(
                 <>
                   <Link to='/Order'>
-            <button className='text-white bg-[#da6129] mt-6 hover:bg-[#e28154] w-[200px] py-3 rounded-[4px] cursor-pointer '>Proceed to checkout</button></Link>
+            <button className='text-white bg-[#da6129] mt-6 hover:bg-[#e28154] w-[200px] py-3 rounded-[4px] cursor-pointer'>Proceed to checkout</button></Link>
         
             </>):(
                 <>
