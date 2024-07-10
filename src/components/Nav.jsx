@@ -21,7 +21,7 @@ const Nav = () => {
     <div className='p-5 flex justify-between items-center'>
         <Link to="/"><img className='w-[150px] ' src={Logo} /></Link>
         <ul className='flex list-none gap-10 text-[#49557e] text-[18px]'>
-            <li className='hover:text-[#da6129]'>home</li>
+        <Link to='/'><li className='hover:text-[#da6129]'>home</li></Link>
             <li className='hover:text-[#da6129]'>menu</li>
             <Link to='/PreviousOrders'><li className='hover:text-[#da6129]'>previous orders</li></Link>
         </ul>

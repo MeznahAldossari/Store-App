@@ -131,7 +131,7 @@ const removeItem = (itemID)=>{
         <div className="cart-items">
             <div className="flex justify-between gap-[80px] items-center text-[gray] text-[12px] ">
               <table className='w-full table-auto '>
-                <tr className='text-[18px]'>
+                <tr className='text-[18px] text-[#da6129]'>
                     <th>Items</th>
                     <th>Title</th>
                     <th>Price</th>
@@ -145,21 +145,21 @@ const removeItem = (itemID)=>{
                     {allProducts.map((item, index) =>(
                         <>
                         <tr className=' ' key={index}>
-                            <td className='flex justify-center '><img className='w-[5vw]' src={item.image} alt="" /></td>
-                            <td className='text-center '>{item.productName}</td>
-                            <td className='text-center'>{item.price}</td>
-                            <td className='text-center'>
+                            <td className='flex justify-center '><img className='w-[5vw] rounded-full' src={item.image} alt="" /></td>
+                            <td className='text-center text-[1rem] '>{item.productName}</td>
+                            <td className='text-center text-[1rem]'>{item.price}</td>
+                            <td className='text-center text-[1rem]'>
                             <div className='flex flex-col justify-between h-full py-2 items-center '>
                             <p>{item.qty}</p>
-                            <div className='flex gap-2 justify-center items-center mt-4'>
+                            <div className='flex gap-2 justify-center items-center mt-4 '>
                                 
-                                <img className='w-5 h-5' src={Plus} onClick={()=>AddQTY(item.prodID)} alt="" />
-                                <img className='w-5 h-5' src={Minus}  onClick={()=>removeQTY(item.prodID)} alt="" />
+                                <img className='w-5 h-5 cursor-pointer' src={Plus} onClick={()=>AddQTY(item.prodID)} alt="" />
+                                <img className='w-5 h-5 cursor-pointer' src={Minus}  onClick={()=>removeQTY(item.prodID)} alt="" />
                             </div>
                             </div>
                             </td>
-                            <td className='text-center'>{item.qty*item.price}</td>
-                            <td className='text-center'><img className='w-[2vw] m-auto curser-pointer' src={Remove} alt="" onClick={()=> removeItem(item.prodID)} /></td>
+                            <td className='text-center text-[1rem]'>{item.qty*item.price}</td>
+                            <td className='text-center text-[1rem] curser-pointer'><img className='w-[2vw] m-auto curser-pointer' src={Remove} alt="" onClick={()=> removeItem(item.prodID)} /></td>
                         </tr>
                         
                         </>
