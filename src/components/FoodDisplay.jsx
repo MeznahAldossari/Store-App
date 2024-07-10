@@ -70,7 +70,9 @@ const FoodDisplay = ({categoryFood}) => {
             className="border  border-gray-300 rounded-lg px-3 py-2 w-[25vw]"
             placeholder='Search Dishes by name'
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => {setSearch(e.target.value)
+              setDishes(allDishes)}
+            }
           />
           <button
             className="flex  justify-center rounded-lg bg-orange-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"

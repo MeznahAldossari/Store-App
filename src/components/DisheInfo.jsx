@@ -13,6 +13,7 @@ const DisheInfo = () => {
     const { id } = useParams();
     const [productDetails, setProductDetails] = useState({})
     const getLocal = localStorage.getItem("id")
+    const [count, setCount] = useState(0)
 
 
     
@@ -69,6 +70,7 @@ const DisheInfo = () => {
                     "qty": 1,
                      "status":"uncomplete"
                   })
+                  setCount(count+1)
 
                 }
                 axios.put(`https://667b1a30bd627f0dcc91b421.mockapi.io/Users/Users/${getLocal}`,{
