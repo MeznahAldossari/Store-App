@@ -17,6 +17,8 @@ const Nav = () => {
   const handleLogout = () => {
     localStorage.removeItem("id")
     dispatch(logout());
+    navigate('/')
+
   };
   useEffect(()=>{
 
@@ -54,9 +56,10 @@ const Nav = () => {
             {isLoggedIn ? (
  <button  
  onClick={handleLogout}
+
 className='bg-transparent text-[16px] text-[#49557e] border border-solid border-[tomato] px-8 py-2.5 rounded-full cursor-pointer hover:bg-[#fff4f2] transition-[0.3s]'>Log out</button> 
        ) : (
-<Link to={"/SignUp"}>
+<Link to={"/Login"}>
             <button   
                 
  className='bg-transparent text-[16px] text-[#49557e] border border-solid border-[tomato] px-8 py-2.5 rounded-full cursor-pointer hover:bg-[#fff4f2] transition-[0.3s]'>sign in</button>

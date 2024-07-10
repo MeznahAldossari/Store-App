@@ -13,7 +13,7 @@ const SignUp = () => {
     const handleSubmit = async (values, { setSubmitting }) => {
         try {
             await axios.post("https://667b1a30bd627f0dcc91b421.mockapi.io/Users/Users", {
-                name: values.name,
+                username: values.name,
                 email: values.email,
                 password: values.password,
             });
