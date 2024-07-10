@@ -84,10 +84,10 @@ const Checkout = () => {
   return (
     <>
     <Nav />
-    <div className='grid grid-cols-2  mt-16'>
+    <div className='grid grid-cols-2  mt-16 max-sm:grid-cols-1'>
     <form className='flex items-start justify-evenly '>
         {/* left side */}
-        <div className="">
+        <div className="max-sm:m-4">
             <p className='text-[30px] font-bold mb-[50px]'>Delivery Information</p>
             <div className="flex gap-[10px]">
                 <input onChange={(e)=>{setUserAddress({...userAddress, "firstName": e.target.value})}} className='mb-[15px] w-[100%] p-[10px] border border-solid border-[#c5c5c5] rounded-[4px] outline-[#f35d21]' type="text" placeholder='First Name' />
@@ -115,7 +115,7 @@ const Checkout = () => {
         </form>
 
         <div className="w-[90%]">
-        <div className="flex-1 flex flex-col ">
+        <div className="flex-1 flex flex-col max-sm:m-4 ">
             <h2 className='text-[1.5rem] font-bold'>Order Summary</h2>
          
             <div className='flex flex-col mt-12'>

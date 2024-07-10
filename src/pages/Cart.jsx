@@ -127,13 +127,13 @@ const removeItem = (itemID)=>{
     <>
     <Nav />
     <div className='flex flex-col justify-center items-center'> 
-    <div className='mt-[100px] w-[70vw] '>
+    <div className='mt-[100px] w-[70vw] max-sm:w-[100vw]'>
         <div className="cart-items">
             <div className="flex justify-between gap-[80px] items-center text-[gray] text-[12px] ">
             {allProducts.length >0 ? (
                     <>
               <table className='w-full table-auto '>
-                <tr className='text-[18px] border-b-[1.5px] mt-'>
+                <tr className='text-[18px] border-b-[1.5px] mt- max-sm:text-[14px]'>
                     <th className='pb-2'>Items</th>
                     <th className='pb-2'>Title</th>
                     <th className='pb-2'>Price</th>
@@ -146,12 +146,12 @@ const removeItem = (itemID)=>{
                     {allProducts.map((item, index) =>(
                         <>
                         <tr className='h-24  ' key={index}>
-                            <td className='flex justify-center '><img className='w-[5vw] mt-4' src={item.image} alt="" /></td>
-                            <td className='text-center text-[0.9rem] '>{item.productName}</td>
-                            <td className='text-center text-[0.9rem]'>{item.price}</td>
+                            <td className='flex justify-center '><img className='w-[5vw] mt-4 max-sm:w-[20vw]' src={item.image} alt="" /></td>
+                            <td className='text-center text-[0.9rem] max-sm:text-[0.8rem] '>{item.productName}</td>
+                            <td className='text-center text-[0.9rem] max-sm:text-[0.8rem]'>{item.price}</td>
                             <td className='text-center'>
                             <div className='flex flex-col justify-between h-full py-2 items-center '>
-                            <p className='text-[0.9rem]'>{item.qty}</p>
+                            <p className='text-[0.9rem] max-sm:text-[0.8rem]'>{item.qty}</p>
                             <div className='flex gap-2 justify-center items-center mt-4'>
                                 
                                 <img className='w-5 h-5 cursor-pointer' src={Plus} onClick={()=>AddQTY(item.prodID)} alt="" />
@@ -159,8 +159,8 @@ const removeItem = (itemID)=>{
                             </div>
                             </div>
                             </td>
-                            <td className='text-center text-[0.9rem]'>{item.qty*item.price}</td>
-                            <td className='text-center'><img className='w-[2vw] m-auto curser-pointer' src={Remove} alt="" onClick={()=> removeItem(item.prodID)} /></td>
+                            <td className='text-center text-[0.9rem] max-sm:text-[0.8rem]'>{item.qty*item.price}</td>
+                            <td className='text-center'><img className='w-[2vw] m-auto curser-pointer max-sm:w-[5vw]' src={Remove} alt="" onClick={()=> removeItem(item.prodID)} /></td>
                         </tr>
                         
                         </>
@@ -199,7 +199,7 @@ const removeItem = (itemID)=>{
             {allProducts.length >0?(
                 <>
                   <Link to='/Order'>
-            <button className='text-white bg-[#da6129] mt-6 hover:bg-[#e28154] w-[200px] py-3 rounded-[4px] cursor-pointer'>Proceed to checkout</button></Link>
+            <button className='text-white bg-[#da6129] mt-6 hover:bg-[#e28154] w-[200px] py-3 rounded-[4px] cursor-pointer '>Proceed to checkout</button></Link>
         
             </>):(
                 <>

@@ -8,11 +8,11 @@ const ExploreMenu = () => {
     const [cateoryOption, setCategoryOption] = useState("All")
   return (
     <div className='flex flex-col gap-5 '>
-        <h1 className='text-[#262626] font-medium text-[30px]'>Explore Our Menu</h1>
-        <p className='w-full text-[1.1rem]'>Choose from a diverse menu featuring a delectable array of dishes. Our mission is to satisfy your cravings and elevate your dining experience, one delicious meal at a time.</p>
+        <h1 className='text-[#262626] font-medium text-[30px] max-sm:text-[25px]'>Explore Our Menu</h1>
+        <p className='w-full text-[1.1rem] max-sm:text-[0.9rem]'>Choose from a diverse menu featuring a delectable array of dishes. Our mission is to satisfy your cravings and elevate your dining experience, one delicious meal at a time.</p>
         <div className='explore-menu-list flex justify-between items-center gap-[30px] text-center my-5 '> {/*hidden scroll*/}
             {/* {map here} */}
-            <div className='items flex gap-6'>
+            <div className='items flex gap-6 max-sm:gap-2'>
                 <div onClick={()=>setCategoryOption("All")}>
                     <img className='w-[7.5vw] min-w-[80px] cursor-pointer rounded-full transition-[0.2s] duration-500 hover:scale-125' src={Meal} />
                     <p className=' mt-[10px] text-[#747474] text-[16px] cursor-pointer'>All</p>
