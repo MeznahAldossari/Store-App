@@ -174,12 +174,12 @@ const Login = () => {
             Sign up
           </Link>
         </p>
-        <p className=" text-center text-sm text-gray-500">
+        {/* <p className=" text-center text-sm text-gray-500">
             Back to 
             <Link to="/" className="pl-[3px] font-semibold leading-6 text-[#da6129] hover:text-[#e28154]">
                 home
             </Link>
-        </p>
+        </p> */}
       </div>
     </div>  )
 }

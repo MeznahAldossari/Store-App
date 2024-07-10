@@ -154,8 +154,8 @@ const removeItem = (itemID)=>{
                             <p className='text-[0.9rem]'>{item.qty}</p>
                             <div className='flex gap-2 justify-center items-center mt-4'>
                                 
-                                <img className='w-5 h-5' src={Plus} onClick={()=>AddQTY(item.prodID)} alt="" />
-                                <img className='w-5 h-5' src={Minus}  onClick={()=>removeQTY(item.prodID)} alt="" />
+                                <img className='w-5 h-5 cursor-pointer' src={Plus} onClick={()=>AddQTY(item.prodID)} alt="" />
+                                <img className='w-5 h-5 cursor-pointer' src={Minus}  onClick={()=>removeQTY(item.prodID)} alt="" />
                             </div>
                             </div>
                             </td>

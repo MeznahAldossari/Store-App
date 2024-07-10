@@ -63,7 +63,7 @@ const FoodDisplay = ({categoryFood}) => {
   return (
     <div className='mt-[30px] '>
       <div className='flex justify-between'>
-      <h2 className='text-[24px] font-bold '>All Dishes</h2>
+      <h2 className='text-[24px] font-bold max-sm:text-[20px] '>All Dishes</h2>
       <div className='flex gap-1'>
       <input
             type="text"
@@ -83,7 +83,7 @@ const FoodDisplay = ({categoryFood}) => {
    
       </div>
       <div className='flex justify-center w-full'>
-        <div className='grid grid-cols-4 gap-y-16 mt-[30px] gap-[30px] row-gap-[30px]'> {/*grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); css*/}
+        <div className='grid grid-cols-4 gap-y-16 mt-[30px] gap-[30px] row-gap-[30px] max-sm:grid-cols-1'> {/*grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); css*/}
             {/* {map method start here} */}
             {dishes.map((dishe, id) => (
 <div key={id} className='h-[65vh] items-stretch'>

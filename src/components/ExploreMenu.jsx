@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import Meal from '../assets/meal.jpeg'
-import pizzas from '../assets/pizzas.jpg'
-import sweet from '../assets/sweets.png'
+import Meal from '../assets/all-meal.jpg'
+import pizzas from '../assets/pizza.jpg'
+import sweet from '../assets/sweet.jpg'
+import burger from '../assets/burger.jpg'
 import FoodDisplay from './FoodDisplay'
 const ExploreMenu = () => {
     const [cateoryOption, setCategoryOption] = useState("All")
@@ -12,27 +13,26 @@ const ExploreMenu = () => {
         <div className='explore-menu-list flex justify-between items-center gap-[30px] text-center my-5 '> {/*hidden scroll*/}
             {/* {map here} */}
             <div className='items flex gap-6'>
-            <div className='bg-black' onClick={()=>setCategoryOption("All")}>
-                <img className='w-[7.5vw] min-w-[80px] cursor-pointer rounded-full transition-[0.2s]' src={Meal} />
-                <p className=' mt-[10px] text-[#747474] text-[16px] cursor-pointer'>All</p>
-                
-
+                <div onClick={()=>setCategoryOption("All")}>
+                    <img className='w-[7.5vw] min-w-[80px] cursor-pointer rounded-full transition-[0.2s] duration-500 hover:scale-125' src={Meal} />
+                    <p className=' mt-[10px] text-[#747474] text-[16px] cursor-pointer'>All</p>
                 </div>
+
                 <div onClick={()=>setCategoryOption("burgers")}>
-                <img className='w-[7.5vw] min-w-[80px] cursor-pointer rounded-full transition-[0.2s]' src={Meal} />
-                <p className=' mt-[10px] text-[#747474] text-[16px] cursor-pointer'>burgers</p>
-                
+                    <img className='w-[7.5vw] min-w-[80px] cursor-pointer rounded-full transition-[0.2s] duration-500 hover:scale-125' src={burger} />
+                    <p className=' mt-[10px] text-[#747474] text-[16px] cursor-pointer'>burgers</p>
+                </div>
 
-                </div>
                 <div onClick={()=>setCategoryOption("Desserts")}>
-                <img className='w-[8vw] h-[20vh] cursor-pointer rounded-full ' src={sweet} />
-                <p className=' mt-[10px] text-[#747474] text-[16px] cursor-pointer'>Desserts</p>
+                    <img className='w-[7.5vw] min-w-[80px] cursor-pointer rounded-full transition-[0.2s]  duration-500 hover:scale-125 ' src={sweet} />
+                    <p className=' mt-[10px] text-[#747474] text-[16px] cursor-pointer'>Desserts</p>
                 </div>
+
                 <div onClick={()=>setCategoryOption("pizza")}>
-                <img className='w-[7.5vw] min-w-[80px] cursor-pointer rounded-full transition-[0.2s]' src={Meal} />
-                <p className=' mt-[10px] text-[#747474] text-[16px] cursor-pointer'>pizza</p>
+                    <img className='w-[7.5vw] min-w-[80px] cursor-pointer rounded-full transition-[0.2s] duration-500 hover:scale-125' src={pizzas} />
+                    <p className=' mt-[10px] text-[#747474] text-[16px] cursor-pointer'>pizza</p>
                 </div>
-                </div>
+            </div>
             {/* end here */}
             {/* <hr className='my-4 h-[2px] bg-[#999999] border-none' /> */}
         </div>
