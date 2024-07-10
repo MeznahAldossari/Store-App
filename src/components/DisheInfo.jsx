@@ -56,9 +56,10 @@ const DisheInfo = () => {
                       "price": productInfo.price,
                       "qty": 1,
                       "status":"uncomplete"
-                    })
-                  }else{
-                    alert("the item Already Exists")
+                    });
+                    setMessage({ successful: "The item is added to cart" });
+                  } else {
+                    setMessage({ exists: "The item already exists" });
                   }
                 
                 }else{
@@ -73,7 +74,7 @@ const DisheInfo = () => {
                      "status":"uncomplete"
                   })
                   setCount(count+1)
-
+                  setMessage({ successful: "The item is added to cart" });
                 }
                 axios.put(`https://667b1a30bd627f0dcc91b421.mockapi.io/Users/Users/${getLocal}`,{
                   cartItem:arr
@@ -98,7 +99,34 @@ const DisheInfo = () => {
   return (
     <>
     <Nav itemsTotal = {hiscount}/>
-<div className='mt-20 '>
+    <div className='flex justify-end px-20 '>
+ {/* start of message */}
+ <div className='mt-10 mr-10'>
+                {message.exists && (
+                  <div role="alert" className="alert">
+                    <img className='w-[2vw]' src={Basket} alt="Basket Icon" />
+                    <span>{message.exists}</span>
+                  </div>
+                )}
+                {message.successful && (
+                  <div role="alert" className="alert alert-success">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6 shrink-0 stroke-current"
+                      fill="none"
+                      viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>{message.successful}</span>
+                  </div>
+                )}
+              </div>
+              </div>
+<div className='mt-4 '>
   <div key={id} className=' w-[80%] m-auto rounded-[15px] shadow flex max-sm:flex-col'> {/*box-shadow: 0px 0px 10px #00000015; css*/}
     <div className="relative ">
         <img className='w-[20vw] h-[40vh] rounded-[15px] flex max-sm:w-[100%]' src={dishes.image} />
