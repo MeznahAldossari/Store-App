@@ -63,8 +63,8 @@ const PreviousOrders = () => {
    
 <div className='flex justify-center items-center mt-11'>
 <div className='w-full items-center flex flex-col gap-4'>
-    <div className='flex  w-[60vw] '>
-    <h2 className='text-[1.5rem] text-left font-bold'>Previous Orders</h2>
+    <div className='flex  w-[60vw] max-sm:justify-center '>
+    <h2 className='text-[1.5rem] text-left font-bold max-sm:text-center'>Previous Orders</h2>
 
     </div>
   
@@ -74,7 +74,7 @@ const PreviousOrders = () => {
             <>
              {allProducts.map((item,index)=>(
                 <>
-                 <div className="collapse mt-[-10px] collapse-plus bg-base-200 w-[60vw]">
+                 <div className="collapse mt-[-10px] collapse-plus bg-base-200 w-[60vw] max-sm:w-[90vw]">
                    
                         <input type="radio" name="my-accordion-3" />
                         <div className="collapse-title text-xl flex justify-between font-medium text-[#da6129]">
