@@ -90,7 +90,7 @@ const FoodDisplay = ({categoryFood}) => {
         <div className='grid grid-cols-4 gap-y-16 mt-[30px] gap-[30px] row-gap-[30px] max-sm:grid-cols-1'> {/*grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); css*/}
         {noDishesFound ? (
         <p className=' text-2xl font-semibold'>No dishes found</p>
-       ) : (
+      ) : (
             dishes.map((dishe, id) => (
 <div key={id} className='h-[65vh] items-stretch'>
          <div className=' rounded-[15px] shadow-inner'> {/*box-shadow: 0px 0px 10px #00000015; css*/}

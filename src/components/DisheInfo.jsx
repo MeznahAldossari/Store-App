@@ -77,27 +77,9 @@ const DisheInfo = () => {
   return (
     <>
       <Nav />
-      <div className='mt-20 '>
-        <div key={id} className='w-[80%] m-auto rounded-[15px] shadow flex'>
-          <div className="relative">
-            <img className='w-[20vw] h-[40vh] rounded-[15px]' src={dishes.image} alt={dishes.product} />
-          </div>
-          <div className="p-[20px]">
-            <div className="flex items-end justify-between mb-[10px]">
-              <p className='text-[20px] font-medium'>{dishes.product}</p>
-              {/* <img className='w-[70px]'>rating stars</img> */}
-            </div>
-            <div className='flex flex-col justify-between h-[50%]'>
-              <div>
-                <p className="text-[#676767] text-[14px]">{dishes.description}</p>
-                <p className="text-[#e46634] text-[22px] font-medium my-4">{dishes.price}$</p>
-              </div>
-              <div className='flex gap-4'>
-                <button className='text-white bg-[#da6129] mt-6 hover:bg-[#e28154] w-[200px] py-3 rounded-[4px] cursor-pointer' onClick={() => AddToCart(id)}>Add To Cart</button>
-                <Link to="/"><button className='text-white bg-[#616161] mt-6 hover:bg-[#757575] w-[200px] py-3 rounded-[4px] cursor-pointer'>Back</button></Link>
-              </div>
-              {/* start of message */}
-              <div className='mt-7'>
+      <div className='flex justify-end px-20 '>
+ {/* start of message */}
+ <div className='mt-10 mr-10'>
                 {message.exists && (
                   <div role="alert" className="alert">
                     <img className='w-[2vw]' src={Basket} alt="Basket Icon" />
@@ -121,6 +103,28 @@ const DisheInfo = () => {
                   </div>
                 )}
               </div>
+      </div>
+      
+      <div className='mt-4 '>
+        <div key={id} className='w-[80%] m-auto rounded-[15px] shadow flex'>
+          <div className="relative">
+            <img className='w-[20vw] h-[40vh] rounded-[15px]' src={dishes.image} alt={dishes.product} />
+          </div>
+          <div className="p-[20px]">
+            <div className="flex items-end justify-between mb-[10px]">
+              <p className='text-[20px] font-medium'>{dishes.product}</p>
+              {/* <img className='w-[70px]'>rating stars</img> */}
+            </div>
+            <div className='flex flex-col justify-between h-[50%]'>
+              <div>
+                <p className="text-[#676767] text-[14px]">{dishes.description}</p>
+                <p className="text-[#e46634] text-[22px] font-medium my-4">{dishes.price}$</p>
+              </div>
+              <div className='flex gap-4'>
+                <button className='text-white bg-[#da6129] mt-6 hover:bg-[#e28154] w-[200px] py-3 rounded-[4px] cursor-pointer' onClick={() => AddToCart(id)}>Add To Cart</button>
+                <Link to="/"><button className='text-white bg-[#616161] mt-6 hover:bg-[#757575] w-[200px] py-3 rounded-[4px] cursor-pointer'>Back</button></Link>
+              </div>
+             
             </div>
           </div>
         </div>
