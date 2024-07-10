@@ -12,25 +12,25 @@ const Footer = () => {
             <div className="flex flex-col items-start gap-[20px]">
                 <img className='w-[10vw]' src={Logo} alt="" />
                 {/* <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem quisquam vero nam labore eum, reprehenderit explicabo laborum facilis consequatur? Ducimus nihil exercitationem, blanditiis voluptas laborum alias deleniti ullam soluta tempora?</p> */}
-                <div className="flex w-[40px] mr-[15px]">
-                    <img src={X} alt="" />
-                    <img src={Facebook} alt="" />
-                    <img src={Linkedin} alt="" />
+                <div className="flex w-[5%] mr-[15px] gap-8 cursor-pointer">
+                    <img src={X} alt="x-icon" />
+                    <img src={Facebook} alt="facebook-icon" />
+                    <img src={Linkedin} alt="linkedin-icon" />
                 </div>
             </div>
             <div className="flex flex-col items-start gap-[20px]">
                 <h2 className='text-[20px] font-bold'>COMPANY</h2>
                 <ul>
-                    <li className='list-none mb-[10px] cursor-pointer'>About us</li>
-                    <li className='list-none mb-[10px] cursor-pointer'> Delivery</li>
-                    <li className='list-none mb-[10px] cursor-pointer'>Privacy policy</li>
+                    <li className='list-none mb-[10px] cursor-pointer hover:text-[#da6129]'>About us</li>
+                    <li className='list-none mb-[10px] cursor-pointer hover:text-[#da6129]'> Delivery</li>
+                    <li className='list-none mb-[10px] cursor-pointer hover:text-[#da6129]'>Privacy policy</li>
                 </ul>
             </div>
             <div className="flex flex-col items-start gap-[20px]">
                 <h2 className='text-[20px] font-bold'>GET IN TOUCH</h2>
                 <ul>
-                    <li className='list-none mb-[10px] cursor-pointer'>212-234-6547</li>
-                    <li className='list-none mb-[10px] cursor-pointer'>contact@foodly.com</li>
+                    <li className='list-none mb-[10px]'>212-234-6547</li>
+                    <li className='list-none mb-[10px]'>contact@foodly.com</li>
                 </ul>
             </div>
         </div>
