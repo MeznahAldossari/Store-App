@@ -73,7 +73,7 @@ const DisheInfo = () => {
                     "qty": 1,
                      "status":"uncomplete"
                   })
-                  setCount(count+1)
+                  
                   setMessage({ successful: "The item is added to cart" });
                 }
                 axios.put(`https://667b1a30bd627f0dcc91b421.mockapi.io/Users/Users/${getLocal}`,{

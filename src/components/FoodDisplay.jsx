@@ -89,12 +89,12 @@ const FoodDisplay = ({categoryFood}) => {
       </div>
       
       <div className='flex justify-center w-full'>
-        <div className='grid grid-cols-4 gap-y-16 mt-[30px] gap-[30px] row-gap-[30px] max-sm:grid-cols-1'> {/*grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); css*/}
+        <div className='grid grid-cols-4 gap-y-16 max-sm:gay-y-1 mt-[30px] gap-[30px] max-sm:row-gap-[2px] row-gap-[30px] max-sm:grid-cols-1'> {/*grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); css*/}
         {noDishesFound ? (
         <p className=' text-2xl font-semibold'>No dishes found</p>
       ) : (
             dishes.map((dishe, id) => (
-<div key={id} className='h-[65vh] items-stretch'>
+<div key={id} className='h-[65vh] max-sm:h-[50vh]  items-stretch'>
          <div className=' rounded-[15px] shadow-inner'> {/*box-shadow: 0px 0px 10px #00000015; css*/}
                 <div className="h-[36vh]">
                     <img className='w-[100%] h-[40vh] rounded-[15px]' src={dishe.image} />
