@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 
 const Checkout = () => {
@@ -9,6 +10,8 @@ const Checkout = () => {
     const [Orders, setOrders] = useState([])
     const [productTotal, setProductTotals] = useState(0)
     const getLocal = localStorage.getItem("id")
+    const [userAddress, setUserAddress] =useState({})
+    const [checkBool, setCheckBool] = useState(false)
 
 
 
@@ -45,13 +48,16 @@ const Checkout = () => {
         }
 
         const RemoveCart = ()=>{
+            setCheckBool(false)
             axios.get(`https://667b1a30bd627f0dcc91b421.mockapi.io/Users/Users/${getLocal}`).then((res)=>{
                 let arr = res.data.cartItem
-
+              if(userAddress.firstName !=='' && userAddress.secondName !=='' && userAddress.city !=='' && userAddress.country !=='' && userAddress.country !==''&& userAddress.zipcode !=='' && userAddress.firstName !==undefined && userAddress.secondName !==undefined && userAddress.city !==undefined && userAddress.country !==undefined && userAddress.country !==undefined && userAddress.zipcode !==undefined){
+                setCheckBool(true)
                 if(arr && arr !==undefined && arr.length>0){
                     let OrderNumber
                     let allPrevoiuse = []
                     let arr2 = []
+                    
                     if(res.data.previousOrders){
 
                         allPrevoiuse = [...res.data.previousOrders]
@@ -59,20 +65,17 @@ const Checkout = () => {
 
                        allPrevoiuse.push(arr)            
                     axios.put(`https://667b1a30bd627f0dcc91b421.mockapi.io/Users/Users/${getLocal}`,{
-                        previousOrders:allPrevoiuse
+                        previousOrders:allPrevoiuse,
+                        cartItem:[]
                     }).then((res2)=>{
-                        axios.put(`https://667b1a30bd627f0dcc91b421.mockapi.io/Users/Users/${getLocal}`,{
-                            cartItem:[]
-                        }).then((res2)=>{
-                            
-                        })
-                        
+                    
                     })
 
                 }
-             
+              }else{
+                setCheckBool(false)
 
-             
+              }
 
             })
 
@@ -87,18 +90,18 @@ const Checkout = () => {
         <div className="">
             <p className='text-[30px] font-bold mb-[50px]'>Delivery Information</p>
             <div className="flex gap-[10px]">
-                <input className='mb-[15px] w-[100%] p-[10px] border border-solid border-[#c5c5c5] rounded-[4px] outline-[#f35d21]' type="text" placeholder='First Name' />
-                <input className='mb-[15px] w-[100%] p-[10px] border border-solid border-[#c5c5c5] rounded-[4px] outline-[#f35d21]' type="text" placeholder='Last Name'  />
+                <input onChange={(e)=>{setUserAddress({...userAddress, "firstName": e.target.value})}} className='mb-[15px] w-[100%] p-[10px] border border-solid border-[#c5c5c5] rounded-[4px] outline-[#f35d21]' type="text" placeholder='First Name' />
+                <input onChange={(e)=>{setUserAddress({...userAddress, "secondName": e.target.value})}}  className='mb-[15px] w-[100%] p-[10px] border border-solid border-[#c5c5c5] rounded-[4px] outline-[#f35d21]' type="text" placeholder='Last Name'  />
             </div>
             {/* <input className='mb-[15px] w-[100%] p-[10px] border border-solid border-[#c5c5c5] rounded-[4px] outline-[tomato]' type='email' placeholder='Email Address' /> */}
             <input className='mb-[15px] w-[100%] p-[10px] border border-solid border-[#c5c5c5] rounded-[4px] outline-[tomato]' type='text' placeholder='Street' />
             <div className="flex gap-[10px]">
-                <input className='mb-[15px] w-[100%] p-[10px] border border-solid border-[#c5c5c5] rounded-[4px] outline-[#f35d21]'  type="text" placeholder='City' />
-                <input className='mb-[15px] w-[100%] p-[10px] border border-solid border-[#c5c5c5] rounded-[4px] outline-[#f35d21]' type="text" placeholder='State'  />
+                <input onChange={(e)=>{setUserAddress({...userAddress, "city": e.target.value})}}  className='mb-[15px] w-[100%] p-[10px] border border-solid border-[#c5c5c5] rounded-[4px] outline-[#f35d21]'  type="text" placeholder='City' />
+                <input onChange={(e)=>{setUserAddress({...userAddress, "state": e.target.value})}}  className='mb-[15px] w-[100%] p-[10px] border border-solid border-[#c5c5c5] rounded-[4px] outline-[#f35d21]' type="text" placeholder='State'  />
             </div>
             <div className="flex gap-[10px]">
-                <input className='mb-[15px] w-[100%] p-[10px] border border-solid border-[#c5c5c5] rounded-[4px] outline-[#f35d21]' type="text" placeholder='Zip code' />
-                <input className='mb-[15px] w-[100%] p-[10px] border border-solid border-[#c5c5c5] rounded-[4px] outline-[#f35d21]' type="text" placeholder='Country'  />
+                <input onChange={(e)=>{setUserAddress({...userAddress, "zipcode": e.target.value})}}  className='mb-[15px] w-[100%] p-[10px] border border-solid border-[#c5c5c5] rounded-[4px] outline-[#f35d21]' type="text" placeholder='Zip code' />
+                <input onChange={(e)=>{setUserAddress({...userAddress, "country": e.target.value})}}  className='mb-[15px] w-[100%] p-[10px] border border-solid border-[#c5c5c5] rounded-[4px] outline-[#f35d21]' type="text" placeholder='Country'  />
             </div>
             <input className='mb-[15px] w-[100%] p-[10px] border border-solid border-[#c5c5c5] rounded-[4px] outline-[#f35d21]' type='text' placeholder='Phone' />
       {/* {console.log("The Location is", geo)} */}
@@ -152,29 +155,54 @@ const Checkout = () => {
                 
             </div>
           
-           <button className="btn text-white text-[1.3rem]  bg-[#da6129] mt-10 hover:bg-[#e28154] w-[200px] py-3 rounded-[4px] cursor-pointer" onClick={()=>{RemoveCart
-            document.getElementById('my_modal_4').showModal()
-
-           }}>Buy</button>
-            <dialog id="my_modal_4" className="modal">
-            <div className="modal-box w-11/12 max-w-5xl">
-                <h3 className="font-bold text-lg">Hello!</h3>
-                <p className="py-4">Click the button below to close</p>
+           <button className="btn text-white text-[1.3rem]  bg-[#da6129] mt-10 hover:bg-[#e28154] w-[200px] py-3 rounded-[4px] cursor-pointer" onClick={()=>{document.getElementById('my_modal_4').showModal()
+           RemoveCart()}}>Buy</button>
+           {checkBool ===true?(
+            <>
+              <dialog id="my_modal_4" className="modal">
+            <div className="modal-box w-[50vw] max-w-5xl">
+               
+                <p className="py-4">You Paid: {productTotal}. and the shipment will arrive within 5 Days</p>
                 <div className="modal-action">
                 <form method="dialog">
-                    {/* if there is a button, it will close the modal */}
-                    <button className="btn">Close</button>
+                    <Link to='/'>
+                    <button className="btn bg-[#da6129] text-white">Go To Home</button>
+                    </Link>
+                    
                 </form>
                 </div>
             </div>
             </dialog>
+            </>
+           ):<>
+           {checkBool === false &&(
+            <>
+              <dialog id="my_modal_4" className="modal">
+            <div className="modal-box w-[50vw] max-w-5xl">
+               
+                <p className="py-4 text-[1.1rem] font-medium">Please Fill All Fields !</p>
+                <div className="modal-action">
+                <form method="dialog">
+                   
+                    <button className="btn bg-[#da6129] text-white">OK</button>
+                   
+                    
+                </form>
+                </div>
+            </div>
+            </dialog>
+            </>
+           )}
+           
+           </>}
+          
         </div>
         </div>
     
 
     </div>
 
-        {/* right side */}
+    
         
     <Footer />
     </>

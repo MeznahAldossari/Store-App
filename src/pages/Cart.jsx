@@ -3,8 +3,8 @@ import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import Meal from '../assets/meal.jpeg'
 import Remove from '../assets/remove.png'
-import Plus from '../assets/plus1.png'
-import Minus from '../assets/minus.png'
+import Plus from '../assets/pluss.png'
+import Minus from '../assets/minus3.png'
 import axios from 'axios'
 
 import { Link } from 'react-router-dom';
@@ -130,27 +130,28 @@ const removeItem = (itemID)=>{
     <div className='mt-[100px] w-[70vw] '>
         <div className="cart-items">
             <div className="flex justify-between gap-[80px] items-center text-[gray] text-[12px] ">
-              <table className='w-full table-auto '>
-                <tr className='text-[18px]'>
-                    <th>Items</th>
-                    <th>Title</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Subtotal</th>
-                    <th>Remove</th>
-                </tr>
-                {/* <hr className='pb-6 mt-2 w-full' /> */}
-                {allProducts && (
+            {allProducts.length >0 ? (
                     <>
+              <table className='w-full table-auto '>
+                <tr className='text-[18px] border-b-[1.5px] mt-'>
+                    <th className='pb-2'>Items</th>
+                    <th className='pb-2'>Title</th>
+                    <th className='pb-2'>Price</th>
+                    <th className='pb-2'>Quantity</th>
+                    <th className='pb-2'>Subtotal</th>
+                    <th className='pb-2'>Remove</th>
+                </tr>
+                
+                
                     {allProducts.map((item, index) =>(
                         <>
-                        <tr className=' ' key={index}>
-                            <td className='flex justify-center '><img className='w-[5vw]' src={item.image} alt="" /></td>
-                            <td className='text-center '>{item.productName}</td>
-                            <td className='text-center'>{item.price}</td>
+                        <tr className='h-24  ' key={index}>
+                            <td className='flex justify-center '><img className='w-[5vw] mt-4' src={item.image} alt="" /></td>
+                            <td className='text-center text-[0.9rem] '>{item.productName}</td>
+                            <td className='text-center text-[0.9rem]'>{item.price}</td>
                             <td className='text-center'>
                             <div className='flex flex-col justify-between h-full py-2 items-center '>
-                            <p>{item.qty}</p>
+                            <p className='text-[0.9rem]'>{item.qty}</p>
                             <div className='flex gap-2 justify-center items-center mt-4'>
                                 
                                 <img className='w-5 h-5' src={Plus} onClick={()=>AddQTY(item.prodID)} alt="" />
@@ -158,7 +159,7 @@ const removeItem = (itemID)=>{
                             </div>
                             </div>
                             </td>
-                            <td className='text-center'>{item.qty*item.price}</td>
+                            <td className='text-center text-[0.9rem]'>{item.qty*item.price}</td>
                             <td className='text-center'><img className='w-[2vw] m-auto curser-pointer' src={Remove} alt="" onClick={()=> removeItem(item.prodID)} /></td>
                         </tr>
                         
@@ -166,44 +167,18 @@ const removeItem = (itemID)=>{
                     ))}
 
                    
-                    </>
-                )}
+                    
+               
+                
                 </table>
-                {/* <tr className=' '>
-                    <td className='flex justify-center '><img className='w-[5vw]' src={Meal} alt="" /></td>
-                    <td className='text-center '>name dish</td>
-                    <td className='text-center'>Price</td>
-                    <td className='text-center'>
-                        <div className='flex flex-col justify-between h-full py-2 items-center '>
-                            <p>0</p>
-                            <div className='flex gap-2 justify-center items-center mt-4'>
-                                <img className='w-5 h-5' src={Plus} alt="" />
-                                <img className='w-5 h-5' src={Minus} alt="" />
-                            </div>
-                        </div>
-                    </td>
-                    <td className='text-center'>Subtotal</td>
-                    <td className='text-center '><img className='w-[2vw] m-auto' src={Remove} alt="" /></td>
-                </tr> 
-              </table>
-              
-                {/* <p>Items</p>
-                <p>Title</p>
-                <p>Price</p>
-                <p>Quantity</p>
-                <p>Subtotal</p>
-                <p>Remove</p> */}
+                </>
+              ):(<>
+              <p className='text-[1.1rem]'>No Items added in your cart ...</p>
+              </>)}
             </div>
             <br />
             <hr />
-            {/* <div className="flex justify-between gap-[80px] items-center text-[gray] text-[12px] my-2.5">
-                <img className='w-[5vw]' src={Meal} alt="" />
-                <p>name dish</p>
-                <p>$price</p>
-                <p>3</p>
-                <p>12</p>
-                <img className='w-[2vw]' src={Remove} alt="" />
-            </div> */}
+          
         </div>
     </div>
     {/* checkout sec */}
@@ -213,16 +188,42 @@ const removeItem = (itemID)=>{
             <div>
                 <div className="flex justify-between text-[#555]">
                     <p>Delivery Fees </p>
-                    <p className='font-bold'>2</p>
+                    <p className='font-bold'>2 $</p>
                 </div>
                 <hr className='my-4 ' />
                 <div className="flex justify-between text-[#555]">
                     <p >Total</p>
-                    <p className='font-bold'>{productTotal}</p>
+                    <p className='font-bold'>{productTotal} $</p>
                 </div>
             </div>
-            <Link to='/Order'><button className='text-white bg-[#da6129] mt-6 hover:bg-[#e28154] w-[200px] py-3 rounded-[4px] cursor-pointer'>Proceed to checkout</button></Link>
-        </div>
+            {allProducts.length >0?(
+                <>
+                  <Link to='/Order'>
+            <button className='text-white bg-[#da6129] mt-6 hover:bg-[#e28154] w-[200px] py-3 rounded-[4px] cursor-pointer'>Proceed to checkout</button></Link>
+        
+            </>):(
+                <>
+                   <button className="btn text-white bg-[#da6129] mt-6 hover:bg-[#e28154] w-[200px] py-3 rounded-[4px] cursor-pointer" onClick={()=>document.getElementById('my_modal_4').showModal()
+           }>Proceed to checkout</button>
+           
+              <dialog id="my_modal_4" className="modal">
+            <div className="modal-box w-[50vw] max-w-5xl">
+               
+                <p className="py-4">There are No Items in Cart</p>
+                <div className="modal-action">
+                <form method="dialog">
+                
+                    <button className="btn bg-[#da6129] text-white">Ok</button>
+                   
+                    
+                </form>
+                </div>
+            </div>
+            </dialog>
+           
+                </>
+            )}
+          </div>
      
     </div>
     </div>
