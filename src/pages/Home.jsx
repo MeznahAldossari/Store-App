@@ -13,11 +13,11 @@ const Home = () => {
     <>
     <Nav />
     <div className='w-[80%] m-auto'>
-        {/* <Header />
-        <ExploreMenu /> */}
+        <Header />
+        <ExploreMenu />
         {/* <FoodDisplay /> */}
     </div>
-    {/* <Footer /> */}
+    <Footer />
     </>
   )
 }

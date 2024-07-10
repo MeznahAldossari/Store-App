@@ -82,7 +82,7 @@ const Nav = () => {
     <div className='px-5 py-4 flex  justify-between items-center max-sm:hidden'>
         <Link to="/"><img className='w-[150px] ' src={Logo} /></Link>
         <ul className='flex list-none gap-10 text-[#49557e] text-[18px]'>
-        {/* <Link to='/'> <li className='hover:text-[#da6129] text-[1.2rem] cursor-pointer'>Home</li></Link> */}
+        <Link to='/'> <li className='hover:text-[#da6129] text-[1.2rem] cursor-pointer'>Home</li></Link>
             {/* <li className='hover:text-[#da6129] text-[1.2rem] cursor-pointer'>Menu</li> */}
             {getLocal !==undefined && getLocal &&(<>
               <Link to='/PreviousOrders'><li className='text-[1.2rem] hover:text-[#da6129] cursor-pointer'>Previous Orders</li></Link>

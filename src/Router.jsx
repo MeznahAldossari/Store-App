@@ -6,6 +6,7 @@ import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import Checkout from "./pages/Checkout";
 import PreviousOrders from './components/PreviousOrders'
+import ErrorPage from "./pages/ErrorPage";
 
 
 function Router() {
@@ -13,6 +14,7 @@ function Router() {
         {
           path: "/",
           element: <Home />,
+          errorElement:<ErrorPage/>
         },
         {
           path: "/DisheInfo/:id",
