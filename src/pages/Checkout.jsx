@@ -49,8 +49,17 @@ const Checkout = () => {
                 let arr = res.data.cartItem
 
                 if(arr && arr !==undefined && arr.length>0){
+                    let OrderNumber
+                    let allPrevoiuse = []
+                    let arr2 = []
+                    if(res.data.previousOrders){
+
+                        allPrevoiuse = [...res.data.previousOrders]
+                    } 
+
+                       allPrevoiuse.push(arr)            
                     axios.put(`https://667b1a30bd627f0dcc91b421.mockapi.io/Users/Users/${getLocal}`,{
-                        previousOrders:arr
+                        previousOrders:allPrevoiuse
                     }).then((res2)=>{
                         axios.put(`https://667b1a30bd627f0dcc91b421.mockapi.io/Users/Users/${getLocal}`,{
                             cartItem:[]
@@ -142,8 +151,11 @@ const Checkout = () => {
                 </div>
                 
             </div>
-            <button className="btn text-white  bg-[#da6129] mt-10 hover:bg-[#e28154] w-[200px] py-3 rounded-[4px] cursor-pointer" onClick={RemoveCart}
-               >open modal</button>
+          
+           <button className="btn text-white text-[1.3rem]  bg-[#da6129] mt-10 hover:bg-[#e28154] w-[200px] py-3 rounded-[4px] cursor-pointer" onClick={()=>{RemoveCart
+            document.getElementById('my_modal_4').showModal()
+
+           }}>Buy</button>
             <dialog id="my_modal_4" className="modal">
             <div className="modal-box w-11/12 max-w-5xl">
                 <h3 className="font-bold text-lg">Hello!</h3>

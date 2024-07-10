@@ -15,7 +15,7 @@ const Home = () => {
     <div className='w-[80%] m-auto'>
         <Header />
         <ExploreMenu />
-        <FoodDisplay />
+        {/* <FoodDisplay /> */}
     </div>
     <Footer />
     </>
