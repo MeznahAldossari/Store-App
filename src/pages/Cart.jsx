@@ -160,7 +160,29 @@ const removeItem = (itemID)=>{
                             </div>
                             </td>
                             <td className='text-center text-[0.9rem]'>{item.qty*item.price}</td>
-                            <td className='text-center'><img className='w-[2vw] m-auto curser-pointer' src={Remove} alt="" onClick={()=> removeItem(item.prodID)} /></td>
+                            <td className='text-center'>
+                                
+                            <img className=" w-[2vw] m-auto cursor-pointer" src={Remove} onClick={() => { document.getElementById('my_modal_4').showModal() }} />
+
+                            </td>
+                            <dialog id="my_modal_4" className="modal ">
+                                <div className="modal-box w-[35vw] max-w-5xl">
+
+                                <p className="py-4 text-[1.1rem]">Are you sure you want to Remove this Item?</p>
+                                <div className="modal-action">
+                                <form method="dialog" className='gap-6'>
+                               
+                                <button className="btn mr-2 bg-[#da6129] text-white" onClick={()=> removeItem(item.prodID)}>Yes</button>
+                               
+                               
+                                <button className="btn bg-[#da6129] text-white">No</button>
+                               
+
+                                </form>
+                                </div>
+                                </div>
+                            </dialog>
+                        
                         </tr>
                         
                         </>
